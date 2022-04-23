@@ -15,7 +15,6 @@ public class Main {
                 IOException,
                 InterruptedException
     {
-
 //        // TASK 1 Testing
 //        Task1_Directory task1 = new Task1_Directory();
 //        task1.viewAllDevices();
@@ -57,10 +56,6 @@ public class Main {
 //
 //        Task2_Files fileIn = new Task2_Files("task3.json");
 //        System.out.println(fileIn.readFile());
-//
-//        Task3_Person person =
-//                new Task3_Person("Vadim", "Andreev", "21");
-//        var personJ = new JSONObject(person);
 //        //fileIn.deleteFile();
 //        // ---TASK3---
 
@@ -94,8 +89,7 @@ public class Main {
 //        // TASK 5 Testing
 //        Task5_ZIP task5 = new Task5_ZIP();
 //        task5.createZipArchive("cat.xml");
-//
-//        task5.unzipFile("cat.xml.zip");
+//        System.out.println(task5.unzipFile("cat.xml.zip"));
 //        // ---TASK5---
     }
 }

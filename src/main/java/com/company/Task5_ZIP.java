@@ -24,27 +24,32 @@ public class Task5_ZIP {
         fos.close();
     }
 
-    public void unzipFile(String fileName) throws IOException {
+    public String unzipFile(String fileName) throws IOException {
         byte[] buffer = new byte[1024];
         ZipInputStream zis = new ZipInputStream(new FileInputStream(fileName));
         ZipEntry zipEntry = zis.getNextEntry();
-        while (zipEntry != null) {
-            File newFile =
-                    new File(
-                            "UZ" +
-                                    fileName.substring(0, fileName.length() - 4)
+        String fileInfo = new String();
+        File newFile =
+                new File(
+                        "UZ_" +
+                                fileName.substring(0, fileName.length() - 4)
 
-                    );
-            // write file content
-            FileOutputStream fos = new FileOutputStream(newFile);
-            int len;
-            while ((len = zis.read(buffer)) > 0) {
-                fos.write(buffer, 0, len);
-            }
-            fos.close();
-            zipEntry = zis.getNextEntry();
+                );
+        // write file content
+        FileOutputStream fos = new FileOutputStream(newFile);
+        int len;
+        while ((len = zis.read(buffer)) > 0) {
+            fos.write(buffer, 0, len);
         }
+        fos.close();
+        fileInfo += "Zip file info...\n";
+        fileInfo += "Size of input file: " + zipEntry.getSize() + "\n";
+        fileInfo +=
+                "Size of compressed file: " +
+                        zipEntry.getCompressedSize() +
+                        "\n";
         zis.closeEntry();
         zis.close();
+        return fileInfo;
     }
 }
