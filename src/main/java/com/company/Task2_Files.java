@@ -7,14 +7,10 @@ import java.util.Map;
 
 public class Task2_Files {
     private File file;
-    private static String FILE_DIRECTORY = "~/Documents/testing/Java/";
 
     public Task2_Files(String fileName) throws IOException {
         file = new File(fileName);
         file.createNewFile();
-    }
-
-    protected void finalize() throws Throwable {
     }
 
     public void writeToFile(String text) {
