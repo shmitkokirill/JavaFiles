@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Task4_XML {
-    public String createXmlData(List<Map<String, String>> data) {
-        String result = new String();
-        for (var map : data) {
-            for (var key : map.keySet()) {
-                result += "\n  <" + key + ">" + map.get(key) + "</" + key + ">";
-            }
+    public String[] createXmlData(List<XmlMap> data) {
+        String[] result = new String[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            result[i] = "  <" +
+                    data.get(i).property +
+                    ">" + data.get(i).value +
+                    "</" + data.get(i).property +
+                    ">";
         }
         return result;
     }

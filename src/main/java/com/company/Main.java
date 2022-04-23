@@ -65,24 +65,25 @@ public class Main {
         fileIn.deleteFile();*/
 
         Task4_XML task4 = new Task4_XML();
-        List<Map<String, String>> addList = new ArrayList<>();
+        List<XmlMap> addList = new ArrayList<>();
         Scanner in = new Scanner(System.in);
 
         for (int i = 0; i < 2; i++) {
-            Map<String, String> line = new HashMap<>();
+            XmlMap line = new XmlMap();
             System.out.println("Enter the property");
             String key = in.nextLine();
             System.out.println("Enter the value");
             String value = in.nextLine();
-            line.put(key, value);
+            line.property = key;
+            line.value = value;
             addList.add(line);
         }
 
-        String toAdd = task4.createXmlData(addList);
+        String[] toAdd = task4.createXmlData(addList);
         Task2_Files outFile = new Task2_Files("cat.xml");
         var fileList = outFile.readFileToList();
-        int lastString = fileList.size() - 1;
-        fileList.add(lastString - 1, toAdd);
+        for (int i = 0; i < toAdd.length; i++)
+            fileList.add(fileList.size() - 2, toAdd[i]);
 
         outFile.writeToFile(fileList);
 
